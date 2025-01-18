@@ -1,22 +1,29 @@
 #include <unistd.h>
-int		main(int ac, char **av)
+void ft_putchar(char c)
+{
+    write (1, &c, 1);
+}
+int main(int ac, char **av)
 {
     int i = 0;
     int j = 0;
-    char *s2 = av[2];
-    char *s1 = av[1];
+    int b = 0;
+    int n = 0;
+    int tab[255] = {0};
     if (ac == 3)
     {
-	while (s2[i])
-	{
-		if (s1[j] && s1[j] == s2[i])
-			j++;
-		i++;
-	}
-	if (!s1[j])
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
+        char *s1 = av[1];
+        char *s2 = av[2];
+        while (s1[i] && s2[j])
+        {
+            if (s1[i] == s2[j])
+                i++;
+            j++;
+        }
+        if (s1[i] == '\0')
+            ft_putchar('1'); 
+        else
+            ft_putchar('0'); 
     }
-    write(1, "\n", 1);
+    ft_putchar('\n');
 }

@@ -1,8 +1,12 @@
 #include <unistd.h>
+void ft_putchar(char c)
+{
+    write (1, &c, 1);
+}
 int main(int ac, char **av)
 {
     int i = 0;
-    int j;
+    int j = 0;
     int tab[255] = {0};
     if (ac == 3)
     {
@@ -13,18 +17,15 @@ int main(int ac, char **av)
             j = 0;
             while (s2[j])
             {
-                if (s1[i] == s2[j])
+                if (s2[j] == s1[i] && tab[(int)s1[i]] == 0)
                 {
-                    if (tab[(int)s1[i]] == 0)
-                    {
-                        tab[(int)s1[i]] = 1;
-                        write (1, &s2[j], 1);
-                    }
+                    ft_putchar(s1[i]);
+                    tab[(int)s1[i]] = 1;
                 }
                 j++;
             }
             i++;
         }
     }
-    write (1, "\n", 1);
+    ft_putchar('\n');
 }
